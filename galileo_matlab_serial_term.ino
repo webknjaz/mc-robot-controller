@@ -10,7 +10,6 @@ using namespace robot;
 byte angle;
 Robot *r;
 Protocol *p;
-String st;
 
 void setup() {
   Peripheral *hw = new Peripheral();
@@ -33,11 +32,5 @@ void loop() {
     angle = r->getAngle(motorNum);
     angle = p->requestAngle(motorNum, angle);  // requesting new angle
     r->setAngle(motorNum, angle);  // setting new angle
-  }
-
-  if (Serial.available() > 0) {
-    st = Serial.readStringUntil('\n');
-    Serial.println(st);
-    Serial.println(st.length());
   }
 }
